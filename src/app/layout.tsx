@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: 'Facebook Ad Copy Generator',
-  description: 'Generate Facebook ads instantly with AI',
+  title: 'Facebook Ad Copy Generator - Free AI Ad Creator',
+  description: 'Generate high-converting Facebook ads in seconds using AI. Get 3 ad copy variations instantly. Free and easy to use.',
   other: {
     'google-adsense-account': 'ca-pub-5719148036677435',
   }
