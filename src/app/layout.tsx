@@ -18,6 +18,9 @@ export const metadata = {
   description: 'Generate high-converting Facebook ads in seconds using AI. Get 3 ad copy variations instantly. Free and easy to use.',
   other: {
     'google-adsense-account': 'ca-pub-5719148036677435',
+  },
+  verification: {
+    google: 'vlnXuDM7pVrvexOl_qIMhvVZCPr0HlAgB5GmdOo2Wd8',
   }
 }
 
