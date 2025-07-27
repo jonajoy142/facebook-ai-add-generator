@@ -102,14 +102,16 @@ export default function FacebookAdGenerator() {
                     <div className="inline-flex items-center bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-4">
                         🚀 AI-Powered • Generate in Seconds
                     </div>
+                    {/* H1 title for SEO */}
                     <h1 className="text-6xl font-bold bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent mb-4">
-                        Facebook Ad Copy
+                        AI Facebook Ad Copy Generator
                         <br />
                         <span className="text-5xl">Generator</span>
                     </h1>
+                    {/* SEO intro paragraph */}
                     <p className="text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed">
-                        Transform your marketing with AI-generated, high-converting Facebook ad copy.
-                        Get 3 professional variations instantly and boost your ROI.
+                        Instantly generate high-performing Facebook ads using the power of AI.
+                        Save time, boost conversions, and launch campaigns faster — free to use and ready in seconds.
                     </p>
                     <div className="flex justify-center items-center gap-6 mt-6 text-blue-200">
                         <div className="flex items-center gap-2">
