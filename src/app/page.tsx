@@ -21,6 +21,7 @@ export default function Home() {
   const [adCopies, setAdCopies] = useState<AdCopy[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [copiedText, setCopiedText] = useState('')
 
   const handleBenefitChange = (index: number, value: string) => {
     const newBenefits = [...formData.benefits]
@@ -60,8 +61,26 @@ export default function Home() {
     }
   }
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text)
+  const copyToClipboard = async (text: string) => {
+    try {
+      await navigator.clipboard.writeText(text)
+      setCopiedText(text)
+      setTimeout(() => setCopiedText(''), 2000)
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea')
+      textArea.value = text
+      textArea.style.position = 'fixed'
+      textArea.style.left = '-999999px'
+      textArea.style.top = '-999999px'
+      document.body.appendChild(textArea)
+      textArea.focus()
+      textArea.select()
+      document.execCommand('copy')
+      document.body.removeChild(textArea)
+      setCopiedText(text)
+      setTimeout(() => setCopiedText(''), 2000)
+    }
   }
 
   return (
@@ -206,7 +225,7 @@ export default function Home() {
               <div className="flex items-center justify-center gap-3">
                 <span className="text-xl">✨</span>
                 Generate Ad Copy
-                <span className="text-xl"></span>
+                <span className="text-xl">🚀</span>
               </div>
             )}
           </button>
@@ -248,9 +267,12 @@ export default function Home() {
                       </div>
                       <button
                         onClick={() => copyToClipboard(ad.headline)}
-                        className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105"
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 ${copiedText === ad.headline
+                          ? 'bg-green-500 text-white'
+                          : 'bg-purple-500 hover:bg-purple-600 text-white'
+                          }`}
                       >
-                        Copy Headline
+                        {copiedText === ad.headline ? '✅ Copied!' : '📋 Copy Headline'}
                       </button>
                     </div>
 
@@ -268,9 +290,12 @@ export default function Home() {
                       </div>
                       <button
                         onClick={() => copyToClipboard(ad.primaryText)}
-                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105"
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 ${copiedText === ad.primaryText
+                          ? 'bg-green-500 text-white'
+                          : 'bg-blue-500 hover:bg-blue-600 text-white'
+                          }`}
                       >
-                        Copy Text
+                        {copiedText === ad.primaryText ? '✅ Copied!' : '📋 Copy Text'}
                       </button>
                     </div>
 
@@ -288,9 +313,12 @@ export default function Home() {
                       </div>
                       <button
                         onClick={() => copyToClipboard(ad.description)}
-                        className="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105"
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 ${copiedText === ad.description
+                          ? 'bg-green-500 text-white'
+                          : 'bg-emerald-500 hover:bg-emerald-600 text-white'
+                          }`}
                       >
-                        Copy Description
+                        {copiedText === ad.description ? '✅ Copied!' : '📋 Copy Description'}
                       </button>
                     </div>
 
@@ -303,9 +331,12 @@ export default function Home() {
                       </div>
                       <button
                         onClick={() => copyToClipboard(ad.cta)}
-                        className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 w-full"
+                        className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 transform hover:scale-105 w-full ${copiedText === ad.cta
+                          ? 'bg-green-500 text-white'
+                          : 'bg-orange-500 hover:bg-orange-600 text-white'
+                          }`}
                       >
-                        Copy CTA
+                        {copiedText === ad.cta ? '✅ Copied!' : '📋 Copy CTA'}
                       </button>
                     </div>
                   </div>
